@@ -1,0 +1,7 @@
+# breezometer-api-demo requirements
+pandas
+Flask
+tweepy
+pylint
+autopep8
+python-dotenv
