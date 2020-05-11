@@ -194,3 +194,4 @@ output/*
 # Input
 input/*
 !input/README.md
+!input/locations.csv
