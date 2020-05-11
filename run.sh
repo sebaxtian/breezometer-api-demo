@@ -12,8 +12,10 @@ if [ -f .env ]; then
     #echo $KAGGLE_KEY
 fi
 
-# TODO
-echo "TODO"
+# Run Air Quality
+cd ./src
+python3 air_quality.py
+cd ..
 
 # End
 echo "Finish!"

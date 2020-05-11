@@ -190,6 +190,7 @@ pip-selfcheck.json
 # Output
 output/*
 !output/README.md
+!output/air_quality.csv
 
 # Input
 input/*
