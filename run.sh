@@ -13,6 +13,7 @@ if [ -f .env ]; then
 fi
 
 # Run Air Quality
+echo "Running Air Quality ..."
 cd ./src
 python3 air_quality.py
 cd ..

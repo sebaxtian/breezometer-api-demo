@@ -27,8 +27,8 @@ air_quality = pd.read_csv(os.path.join('../output', 'air_quality.csv'))
 #LOCAL_UTC = datetime.datetime.utcnow().isoformat()
 #print(LOCAL_UTC)
 tz_co = pytz.timezone('America/Bogota')
-d = datetime.datetime.utcnow() - datetime.timedelta(hours=5)
-LOCAL_DATETIME = d.astimezone(tz_co).strftime('%Y-%m-%dT%H:%M:%S')
+local_dt = datetime.datetime.utcnow() - datetime.timedelta(hours=5)
+LOCAL_DATETIME = local_dt.astimezone(tz_co).strftime('%Y-%m-%dT%H:%M:%S')
 #print(LOCAL_DATETIME)
 
 # BreezoMeter API Request
@@ -102,6 +102,8 @@ def get_air_quality_dataframe():
         there_is = air_quality[(air_quality['id'] == ID) & (air_quality['bm_utc'] == BM_UTC)]
         #print(len(there_is.values))
         if len(there_is.values) == 0:
+            # Log
+            print(LABEL, '->', CATEGORY)
             # Air Quality Data
             aqi_data = [ID, LABEL, LAT, LON, BM_UTC, AQI, CATEGORY, COLOR]
             # Append Air Quality Data
@@ -112,16 +114,17 @@ def get_air_quality_dataframe():
             text_tweet_esp = get_text_tweet(aqi_data, lang='esp')
             #print(text_tweet_esp)
             # Post Text Tweet ENG
-            aqi_tweet.post_tweet(text_tweet_eng)
+            #aqi_tweet.post_tweet(text_tweet_eng)
             # Wait
             time.sleep(2)
             # Post Text Tweet ESP
-            aqi_tweet.post_tweet(text_tweet_esp)
+            #aqi_tweet.post_tweet(text_tweet_esp)
         # Wait
         time.sleep(2)
     #print(data_air_quality)
     new_air_quality = pd.DataFrame(columns=['id', 'label', 'lat', 'lon', 'bm_utc', 'aqi', 'category', 'color'], data=data_air_quality)
-    return air_quality.append(new_air_quality, ignore_index=True)
+    # Round Lat Lon values and Return
+    return air_quality.append(new_air_quality, ignore_index=True).round({'lat': 6, 'lon': 6})
 
 # Get Air Quality Dataframe
 air_quality = get_air_quality_dataframe()
