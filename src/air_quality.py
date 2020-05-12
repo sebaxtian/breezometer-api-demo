@@ -114,11 +114,11 @@ def get_air_quality_dataframe():
             text_tweet_esp = get_text_tweet(aqi_data, lang='esp')
             #print(text_tweet_esp)
             # Post Text Tweet ENG
-            #aqi_tweet.post_tweet(text_tweet_eng)
+            aqi_tweet.post_tweet(text_tweet_eng)
             # Wait
             time.sleep(2)
             # Post Text Tweet ESP
-            #aqi_tweet.post_tweet(text_tweet_esp)
+            aqi_tweet.post_tweet(text_tweet_esp)
         # Wait
         time.sleep(2)
     #print(data_air_quality)
