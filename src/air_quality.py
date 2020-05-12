@@ -51,12 +51,16 @@ def get_air_quality_dataframe():
         ID = locations_data.iloc[[index]]['id'].values[0]
         LABEL = locations_data.iloc[[index]]['label'].values[0]
         # BreezoMeter Data
-        DATETIME = bm_aq['data']['datetime']
+        BM_UTC = bm_aq['data']['datetime']
         AQI = bm_aq['data']['indexes']['baqi']['aqi']
         CATEGORY = bm_aq['data']['indexes']['baqi']['category']
         COLOR = bm_aq['data']['indexes']['baqi']['color']
-        # Append Air Quality Data
-        data_air_quality.append([ID, LABEL, LAT, LON, DATETIME, AQI, CATEGORY, COLOR, LOCAL_UTC])
+        # There is?
+        there_is = air_quality[(air_quality['id'] == ID) & (air_quality['bm_utc'] == BM_UTC)]
+        #print(len(there_is.values))
+        if len(there_is.values) == 0:
+            # Append Air Quality Data
+            data_air_quality.append([ID, LABEL, LAT, LON, BM_UTC, AQI, CATEGORY, COLOR, LOCAL_UTC])
         # Wait
         time.sleep(2)
     #print(data_air_quality)
