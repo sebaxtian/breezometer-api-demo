@@ -7,6 +7,7 @@ load_dotenv(dotenv_path=env_path)
 
 # Dependencies
 import pandas as pd
+import numpy as np
 import datetime
 import os
 import tweepy
@@ -17,9 +18,12 @@ import time
 # Locations Dataset
 locations_data = pd.read_csv(os.path.join('../input', 'locations.csv'))
 
-# Datetime
-date_time = datetime.datetime.now().isoformat()
-#print(date_time)
+# Air Quality Dataset
+air_quality = pd.read_csv(os.path.join('../output', 'air_quality.csv'))
+
+# Datetime Local
+LOCAL_UTC = datetime.datetime.utcnow().isoformat()
+#print(LOCAL_UTC)
 
 # BreezoMeter API Request
 def breezometer_api_request(LAT, LON):
@@ -52,11 +56,13 @@ def get_air_quality_dataframe():
         CATEGORY = bm_aq['data']['indexes']['baqi']['category']
         COLOR = bm_aq['data']['indexes']['baqi']['color']
         # Append Air Quality Data
-        data_air_quality.append([ID, LABEL, LAT, LON, DATETIME, AQI, CATEGORY, COLOR])
+        data_air_quality.append([ID, LABEL, LAT, LON, DATETIME, AQI, CATEGORY, COLOR, LOCAL_UTC])
         # Wait
         time.sleep(2)
     #print(data_air_quality)
-    return pd.DataFrame(columns=['id', 'label', 'lat', 'lon', 'utc', 'aqi', 'category', 'color'], data=data_air_quality)
+    new_air_quality = pd.DataFrame(columns=['id', 'label', 'lat', 'lon', 'bm_utc', 'aqi', 'category', 'color', 'local_utc'], data=data_air_quality)
+    return air_quality.append(new_air_quality, ignore_index=True)
+
 # Get Air Quality Dataframe
 air_quality = get_air_quality_dataframe()
 

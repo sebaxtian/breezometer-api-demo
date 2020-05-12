@@ -1,5 +1,6 @@
 # breezometer-api-demo requirements
 pandas
+numpy
 Flask
 tweepy
 pylint
