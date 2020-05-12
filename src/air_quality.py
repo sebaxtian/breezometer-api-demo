@@ -98,12 +98,12 @@ def get_air_quality_dataframe():
         AQI = bm_aq['data']['indexes']['baqi']['aqi']
         CATEGORY = bm_aq['data']['indexes']['baqi']['category']
         COLOR = bm_aq['data']['indexes']['baqi']['color']
+        # Log
+        print(LABEL, '->', CATEGORY)
         # There is?
         there_is = air_quality[(air_quality['id'] == ID) & (air_quality['bm_utc'] == BM_UTC)]
         #print(len(there_is.values))
         if len(there_is.values) == 0:
-            # Log
-            print(LABEL, '->', CATEGORY)
             # Air Quality Data
             aqi_data = [ID, LABEL, LAT, LON, BM_UTC, AQI, CATEGORY, COLOR]
             # Append Air Quality Data
