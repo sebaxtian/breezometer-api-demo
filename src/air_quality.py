@@ -15,6 +15,7 @@ import tweepy
 import requests
 import time
 import aqi_tweet
+import random
 
 
 # Locations Dataset
@@ -31,6 +32,13 @@ air_quality = pd.read_csv(os.path.join('../output', 'air_quality.csv'))
 #LOCAL_DATETIME = local_dt.astimezone(tz_co).strftime('%Y-%m-%dT%H:%M:%S')
 LOCAL_DATETIME = datetime.datetime.utcnow().astimezone(pytz.timezone('America/Bogota')).isoformat()
 print(LOCAL_DATETIME)
+
+# Cities
+CITIES = list(locations_data['label'].values)
+CITY = random.choice(CITIES)
+#print(CITIES)
+#print(CITY)
+print('Tweet City:', CITY)
 
 # BreezoMeter API Request
 def breezometer_api_request(LAT, LON):
@@ -67,6 +75,7 @@ def get_text_tweet(aqi_data, lang='eng'):
 Indice de Calidad del Aire: {aqi} -> {emoji}
 #Calidad #Aire
 Hora Local: {local_datetime}
+https://sebaxtian.github.io/breezometer-api-demo/
 """.format(hashlabel=aqi_data[1].replace(" ", ""), label=aqi_data[1], category=ctg_esp[aqi_data[6]], aqi=aqi_data[5], emoji=ctg_emoji[aqi_data[6]], local_datetime=LOCAL_DATETIME)
     else:
         # English
@@ -75,6 +84,7 @@ Hora Local: {local_datetime}
 Air Quality Index: {aqi} -> {emoji}
 #Air #Quality
 Local Datetime: {local_datetime}
+https://sebaxtian.github.io/breezometer-api-demo/
 """.format(hashlabel=aqi_data[1].replace(" ", ""), label=aqi_data[1], category=aqi_data[6], aqi=aqi_data[5], emoji=ctg_emoji[aqi_data[6]], local_datetime=LOCAL_DATETIME)
     # Return Text Tweet
     return text_tweet
@@ -110,10 +120,12 @@ def get_air_quality_dataframe():
             # Append Air Quality Data
             data_air_quality.append(aqi_data)
             # Filter Random City
-            if LABEL == 'Cali':
+            #print(LABEL, CITY)
+            if LABEL == CITY:
                 # Get Text Tweet ENG
                 text_tweet_eng = get_text_tweet(aqi_data)
                 #print(text_tweet_eng)
+                # Get Text Tweet ESP
                 text_tweet_esp = get_text_tweet(aqi_data, lang='esp')
                 #print(text_tweet_esp)
                 # Post Text Tweet ENG
