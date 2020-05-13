@@ -26,10 +26,11 @@ air_quality = pd.read_csv(os.path.join('../output', 'air_quality.csv'))
 # Local Datetime
 #LOCAL_UTC = datetime.datetime.utcnow().isoformat()
 #print(LOCAL_UTC)
-tz_co = pytz.timezone('America/Bogota')
-local_dt = datetime.datetime.utcnow() - datetime.timedelta(hours=5)
-LOCAL_DATETIME = local_dt.astimezone(tz_co).strftime('%Y-%m-%dT%H:%M:%S')
-#print(LOCAL_DATETIME)
+#tz_co = pytz.timezone('America/Bogota')
+#local_dt = datetime.datetime.utcnow() - datetime.timedelta(hours=5)
+#LOCAL_DATETIME = local_dt.astimezone(tz_co).strftime('%Y-%m-%dT%H:%M:%S')
+LOCAL_DATETIME = datetime.datetime.utcnow().astimezone(pytz.timezone('America/Bogota')).isoformat()
+print(LOCAL_DATETIME)
 
 # BreezoMeter API Request
 def breezometer_api_request(LAT, LON):
@@ -108,17 +109,19 @@ def get_air_quality_dataframe():
             aqi_data = [ID, LABEL, LAT, LON, BM_UTC, AQI, CATEGORY, COLOR]
             # Append Air Quality Data
             data_air_quality.append(aqi_data)
-            # Get Text Tweet ENG
-            text_tweet_eng = get_text_tweet(aqi_data)
-            #print(text_tweet_eng)
-            text_tweet_esp = get_text_tweet(aqi_data, lang='esp')
-            #print(text_tweet_esp)
-            # Post Text Tweet ENG
-            aqi_tweet.post_tweet(text_tweet_eng)
-            # Wait
-            time.sleep(2)
-            # Post Text Tweet ESP
-            aqi_tweet.post_tweet(text_tweet_esp)
+            # Filter Random City
+            if LABEL == 'Cali':
+                # Get Text Tweet ENG
+                text_tweet_eng = get_text_tweet(aqi_data)
+                #print(text_tweet_eng)
+                text_tweet_esp = get_text_tweet(aqi_data, lang='esp')
+                #print(text_tweet_esp)
+                # Post Text Tweet ENG
+                aqi_tweet.post_tweet(text_tweet_eng)
+                # Wait
+                time.sleep(2)
+                # Post Text Tweet ESP
+                aqi_tweet.post_tweet(text_tweet_esp)
         # Wait
         time.sleep(2)
     #print(data_air_quality)
