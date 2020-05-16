@@ -3,10 +3,10 @@
 name: Afternoon Air Quality
 
 # Controls when the action will run. Triggers the workflow on Schedule
-# At minute 15 past hour 12 and 13
+# At minute 15 past hour 12 and 13 UTC -5
 on:
   schedule:
-    - cron: '15 12,13 * * *'
+    - cron: '15 17,18 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
