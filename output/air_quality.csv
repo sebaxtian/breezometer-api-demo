@@ -21389,3 +21389,26 @@ id,label,lat,lon,bm_utc,aqi,category,color
 21,Tunja,5.536831,-73.361473,2020-10-17T01:00:00Z,92,Excellent air quality,#23AB38
 22,Florencia,1.608706,-75.604828,2020-10-17T01:00:00Z,89,Excellent air quality,#30AF37
 23,Quibdó,5.689923,-76.656429,2020-10-17T01:00:00Z,88,Excellent air quality,#34B137
+0,Bogotá,4.627017,-74.080932,2020-10-17T12:00:00Z,68,Good air quality,#90D32D
+1,Medellín,6.213601,-75.577546,2020-10-17T12:00:00Z,59,Moderate air quality,#C7E916
+3,Cali,3.44609,-76.541807,2020-10-17T12:00:00Z,73,Good air quality,#76CA33
+4,Barranquilla,10.991854,-74.80117,2020-10-17T12:00:00Z,81,Excellent air quality,#53BD35
+5,Cartagena,10.412851,-75.52257,2020-10-17T12:00:00Z,74,Good air quality,#72C833
+6,Cúcuta,7.889558,-72.497388,2020-10-17T12:00:00Z,88,Excellent air quality,#34B137
+7,Bucaramanga,7.121317,-73.116654,2020-10-17T12:00:00Z,82,Excellent air quality,#4FBB35
+8,Villavicencio,4.132873,-73.624958,2020-10-17T12:00:00Z,59,Moderate air quality,#C7E916
+9,Ibagué,4.441075,-75.234123,2020-10-17T12:00:00Z,83,Excellent air quality,#4AB936
+10,Santa Marta,11.232692,-74.199434,2020-10-17T12:00:00Z,84,Excellent air quality,#46B836
+11,Montería,8.751005,-75.878911,2020-10-17T12:00:00Z,82,Excellent air quality,#4FBB35
+12,Valledupar,10.469304,-73.256886,2020-10-17T12:00:00Z,79,Good air quality,#5CC035
+13,Pereira,4.810278,-75.692092,2020-10-17T12:00:00Z,45,Moderate air quality,#FFE200
+14,Manizales,5.067777,-75.516233,2020-10-17T12:00:00Z,53,Moderate air quality,#ECF707
+15,Pasto,1.200097,-77.278891,2020-10-17T12:00:00Z,85,Excellent air quality,#42B636
+16,Neiva,2.92943,-75.287266,2020-10-17T12:00:00Z,83,Excellent air quality,#4AB936
+17,Popayán,2.446305,-76.614333,2020-10-17T12:00:00Z,89,Excellent air quality,#30AF37
+18,Armenia,4.534499,-75.675196,2020-10-17T12:00:00Z,76,Good air quality,#69C534
+19,Sincelejo,9.298004,-75.392851,2020-10-17T12:00:00Z,81,Excellent air quality,#53BD35
+20,Riohacha,11.539398,-72.914721,2020-10-17T12:00:00Z,82,Excellent air quality,#4FBB35
+21,Tunja,5.536831,-73.361473,2020-10-17T12:00:00Z,89,Excellent air quality,#30AF37
+22,Florencia,1.608706,-75.604828,2020-10-17T12:00:00Z,75,Good air quality,#6EC634
+23,Quibdó,5.689923,-76.656429,2020-10-17T12:00:00Z,81,Excellent air quality,#53BD35
